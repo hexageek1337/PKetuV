@@ -114,7 +114,7 @@ class voting{
 
 	// used when filling up the update product form
 	function rangkingvoting(){
-		$query = "SELECT id_candidate,id_kriteria,SUM(nilai_voting)/(SELECT COUNT(id_pengguna) FROM pengguna WHERE role = 'Voter') AS jumlahvoting FROM " . $this->table_name . " WHERE id_kriteria = :ik AND id_candidate = :ia";
+		$query = "SELECT id_candidate,id_kriteria,SUM(nilai_voting)/(COUNT(id_pengguna)) AS jumlahvoting FROM " . $this->table_name . " WHERE id_kriteria = :ik AND id_candidate = :ia";
 
 		$stmt = $this->conn->prepare( $query );
 		$stmt->bindParam(':ia', $this->ia);
