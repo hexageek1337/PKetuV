@@ -72,7 +72,7 @@ $stmt2 = $pro2->readAll();
 		<div id="container2" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 		<hr class="hr-footer">
 		<div class="footer">
-			<footer class="text-center">&copy; <?=date("Y")?> Denny Septian</footer>
+			<footer class="text-center">&copy; <?=date("Y")?> PKetuV Solution <i class="fas fa-heart"></i></footer>
 		</div>
 		</div>
 
