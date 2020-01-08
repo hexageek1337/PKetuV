@@ -4,22 +4,31 @@ include_once 'includes/config.php';
 $config = new Config();
 $db = $config->getConnection();
 	
-if($_POST){
+if($_POST AND $_POST['ka']){
 	include_once 'includes/user.inc.php';
     $eks = new User($db);
 
-    $eks->nl = addslashes($_POST['nl']);
-    $eks->un = addslashes($_POST['un']);
-    $eks->pw = md5(addslashes($_POST['pw']));
-    $eks->rl = 'Voter';
-	
-	if($eks->insert()){
-		echo "<script>alert('Register berhasil!')</script>";
-		echo "<script>location.href='index.php'</script>";
-	}
+    $eks->ka = addslashes($_POST['ka']);
 
-	else{
-		echo "<script>alert('Register gagal!')</script>";
+    $dataanggota = $eks->readAnggota();
+    $datavoter = $eks->jumlahVoterTerdaftar();
+
+    if ($datavoter['jvterdaftar'] < $dataanggota['limit_anggota']) {
+	    $eks->nl = addslashes($_POST['nl']);
+	    $eks->un = addslashes($_POST['un']);
+	    $eks->pw = md5(addslashes($_POST['pw']));
+	    $eks->rl = 'Voter';
+		
+		if($eks->insert()){
+			echo "<script>alert('Register berhasil!')</script>";
+			echo "<script>location.href='index.php'</script>";
+		}
+
+		else{
+			echo "<script>alert('Register gagal!')</script>";
+		}
+	} else {
+		echo "<script>alert('Register gagal, Voter sudah mencapai batas maksimum!')</script>";
 	}
 }
 ?>
@@ -77,6 +86,10 @@ if($_POST){
 				<span class="arrow-down login--header__arrow"></span>
 			</header>
 			<form class="login--form" method="post">
+				<div class="login--form__input-area input-group">
+					<span class="input-group-addon"><span class="fa fa-user"></span></span>
+					<input name="ka" type="text" class="form-control" placeholder="Masukkan kode anggota anda ..." />
+				</div>
 				<div class="login--form__input-area input-group">
 					<span class="input-group-addon"><span class="fa fa-at"></span></span>
 					<input name="nl" type="text" class="form-control" placeholder="Masukkan nama lengkap anda ..." />

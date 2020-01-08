@@ -6,33 +6,36 @@ include_once 'includes/criteria.inc.php';
 $pgn2 = new criteria($db);
 include_once 'includes/value.inc.php';
 $pgn3 = new value($db);
-if($_POST){
-	
-	include_once 'includes/voting.inc.php';
-	$eks = new voting($db);
+include_once 'includes/voting.inc.php';
+$eks = new voting($db);
+$dateQ = date('Y-m-d');
+$dataAnggota = $eks->readAnggotaDeadline();
 
-	$eks->ia = addslashes($_POST['ia']);
-	$eks->ik = addslashes($_POST['ik']);
-	$eks->id_pengguna = intval($_SESSION['id_pengguna']);
-	$eks->nn = addslashes($_POST['nn']);
-	
-	if($eks->insert()){
-?>
-<div class="alert alert-success alert-dismissible" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <strong>Berhasil Tambah Data!</strong> Tambah lagi atau <a href="voting.php">lihat semua data</a>.
-</div>
-<?php
+if ($dateQ <= $dataAnggota['deadline']) {
+if($_POST){
+		$eks->ia = addslashes($_POST['ia']);
+		$eks->ik = addslashes($_POST['ik']);
+		$eks->id_pengguna = intval($_SESSION['id_pengguna']);
+		$eks->nn = addslashes($_POST['nn']);
+		
+			if($eks->insert()){
+		?>
+		<div class="alert alert-success alert-dismissible" role="alert">
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		  <strong>Berhasil Tambah Data!</strong> Tambah lagi atau <a href="voting.php">lihat semua data</a>.
+		</div>
+		<?php
+			} else {
+		?>
+		<div class="alert alert-danger alert-dismissible" role="alert">
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		  <strong>Gagal Tambah Data!</strong> Terjadi kesalahan, coba sekali lagi.
+		</div>
+		<?php
+			}
 	}
-	
-	else{
-?>
-<div class="alert alert-danger alert-dismissible" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <strong>Gagal Tambah Data!</strong> Terjadi kesalahan, coba sekali lagi.
-</div>
-<?php
-	}
+} else {
+	echo "<script>location.href='voting.php'</script>";
 }
 ?>
 		<div class="row">

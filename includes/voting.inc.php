@@ -3,6 +3,7 @@ class voting{
 	
 	private $conn;
 	private $table_name = "voting";
+	private $table_dua = "anggota";
 	
 	public $ia;
 	public $id_pengguna;
@@ -16,6 +17,22 @@ class voting{
 	
 	public function __construct($db){
 		$this->conn = $db;
+	}
+
+	// used when filling up the update product form
+	function readAnggotaDeadline(){
+		
+		$query = "SELECT deadline FROM " . $this->table_dua . " LIMIT 0,1";
+		$stmt = $this->conn->prepare( $query );
+		$stmt->bindParam(':ka', $this->ka);
+		$stmt->execute();
+
+		$row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+		$dataee = array();
+		$dataee['deadline'] = $row['deadline'];
+
+		return $dataee;
 	}
 	
 	function insert(){

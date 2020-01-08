@@ -73,6 +73,7 @@ INSERT INTO `value` (`id_nilai`, `ket_nilai`, `jum_nilai`) VALUES
 DROP TABLE IF EXISTS `pengguna`;
 CREATE TABLE `pengguna` (
   `id_pengguna` int(11) NOT NULL,
+  `kode_anggota` varchar(6) NOT NULL,
   `nama_lengkap` varchar(255) NOT NULL,
   `username` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
@@ -83,13 +84,31 @@ CREATE TABLE `pengguna` (
 -- Dumping data for table `pengguna`
 --
 
-INSERT INTO `pengguna` (`id_pengguna`, `nama_lengkap`, `username`, `password`, `role`) VALUES
-(1, 'Hanif', 'admin', '21232f297a57a5a743894a0e4a801fc3','Admin'),
-(2, 'Dadang', 'pesertasatu', '21232f297a57a5a743894a0e4a801fc3','Peserta'),
-(3, 'Dudung', 'pesertadua', '21232f297a57a5a743894a0e4a801fc3','Peserta'),
-(4, 'Mamat', 'pesertatiga', '21232f297a57a5a743894a0e4a801fc3','Peserta'),
-(5, 'Aku Voter', 'votersatu', '21232f297a57a5a743894a0e4a801fc3','Voter'),
-(6, 'Dia Voter', 'voterdua', '21232f297a57a5a743894a0e4a801fc3','Voter');
+INSERT INTO `pengguna` (`id_pengguna`, `kode_anggota`, `nama_lengkap`, `username`, `password`, `role`) VALUES
+(1, '', 'Hanif', 'admin', '21232f297a57a5a743894a0e4a801fc3','Admin'),
+(2, '', 'Dadang', 'pesertasatu', '21232f297a57a5a743894a0e4a801fc3','Peserta'),
+(3, '', 'Dudung', 'pesertadua', '21232f297a57a5a743894a0e4a801fc3','Peserta'),
+(4, '', 'Mamat', 'pesertatiga', '21232f297a57a5a743894a0e4a801fc3','Peserta'),
+(5, 'ASG001', 'Aku Voter', 'votersatu', '21232f297a57a5a743894a0e4a801fc3','Voter'),
+(6, 'ASG001', 'Dia Voter', 'voterdua', '21232f297a57a5a743894a0e4a801fc3','Voter');
+
+--
+-- Table structure for table `anggota`
+--
+DROP TABLE IF EXISTS `anggota`;
+CREATE TABLE `anggota` (
+  `kode_anggota` varchar(6) NOT NULL,
+  `nama_anggota` varchar(50) NOT NULL,
+  `limit_anggota` int(11) NOT NULL,
+  `deadline` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `anggota`
+--
+
+INSERT INTO `anggota` (`kode_anggota`, `nama_anggota`, `limit_anggota`, `deadline`) VALUES
+('ASG001', 'Assisigoing', 3, '');
 
 -- --------------------------------------------------------
 
@@ -139,10 +158,17 @@ ALTER TABLE `value`
   ADD PRIMARY KEY (`id_nilai`);
 
 --
+-- Indexes for table `anggota`
+--
+ALTER TABLE `anggota`
+  ADD PRIMARY KEY (`kode_anggota`);
+
+--
 -- Indexes for table `pengguna`
 --
 ALTER TABLE `pengguna`
-  ADD PRIMARY KEY (`id_pengguna`);
+  ADD PRIMARY KEY (`id_pengguna`,`kode_anggota`),
+  ADD KEY `kode_anggota` (`kode_anggota`);
 
 --
 -- Indexes for table `ranking`

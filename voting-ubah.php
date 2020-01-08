@@ -7,32 +7,38 @@ $pgn1 = new candidate($db);
 $pgn2 = new criteria($db);
 $pgn3 = new value($db);
 
-$ia = isset($_GET['ia']) ? intval($_GET['ia']) : die('ERROR: missing ID.');
-$ik = isset($_GET['ik']) ? intval($_GET['ik']) : die('ERROR: missing ID.');
-
 include_once 'includes/voting.inc.php';
 $eks = new voting($db);
 
-$eks->ia = $ia;
-$eks->ik = $ik;
-$eks->id_pengguna = intval($_SESSION['id_pengguna']);
+$dateQ = date('Y-m-d');
+$dataAnggota = $eks->readAnggotaDeadline();
 
-$eks->readOne();
+if ($dateQ <= $dataAnggota['deadline']) {
+	$ia = isset($_GET['ia']) ? intval($_GET['ia']) : die('ERROR: missing ID.');
+	$ik = isset($_GET['ik']) ? intval($_GET['ik']) : die('ERROR: missing ID.');
+	$eks->ia = $ia;
+	$eks->ik = $ik;
+	$eks->id_pengguna = intval($_SESSION['id_pengguna']);
 
-if($_POST){
+	$eks->readOne();
 
-	$eks->nn = addslashes($_POST['nn']);
-	
-	if($eks->update()){
-		echo "<script>location.href='voting.php'</script>";
-	} else{
-?>
-<div class="alert alert-danger alert-dismissible" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <strong>Gagal Ubah Data!</strong> Terjadi kesalahan, coba sekali lagi.
-</div>
-<?php
+	if($_POST){
+
+		$eks->nn = addslashes($_POST['nn']);
+		
+		if($eks->update()){
+			echo "<script>location.href='voting.php'</script>";
+		} else{
+	?>
+	<div class="alert alert-danger alert-dismissible" role="alert">
+	  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	  <strong>Gagal Ubah Data!</strong> Terjadi kesalahan, coba sekali lagi.
+	</div>
+	<?php
+		}
 	}
+} else {
+	echo "<script>location.href='voting.php'</script>";
 }
 ?>
 		<div class="row">

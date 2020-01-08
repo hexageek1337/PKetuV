@@ -14,6 +14,10 @@ $pro2 = new criteria($db);
 $stmt2 = $pro2->readAll();
 include_once 'includes/voting.inc.php';
 $pro = new voting($db);
+$dateQ = date('Y-m-d');
+$dataAnggota = $pro->readAnggotaDeadline();
+
+if ($dateQ <= $dataAnggota['deadline']) {
 $pro->id_pengguna = intval($_SESSION['id_pengguna']);
 $stmt = $pro->readKhusus();
 ?>
@@ -74,6 +78,11 @@ $stmt = $pro->readKhusus();
 	
 	</div>
 <?php
+	} else { ?>
+		<div class="container">
+            <div class="text-center">Maaf batas waktu voting telah habis!</div>
+        </div>
+	<?php }
 include_once 'footer.php';
 	}
 }

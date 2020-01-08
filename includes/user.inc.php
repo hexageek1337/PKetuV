@@ -3,8 +3,10 @@ class User{
 	
 	private $conn;
 	private $table_name = "pengguna";
+	private $table_dua = "anggota";
 	
 	public $id;
+	public $ka;
 	public $nl;
 	public $un;
 	public $pw;
@@ -16,12 +18,13 @@ class User{
 	
 	function insert(){
 		
-		$query = "insert into ".$this->table_name." values(NULL,?,?,?,?)";
+		$query = "insert into ".$this->table_name." values(NULL,:ka,:nl,:un,:pw,:rl)";
 		$stmt = $this->conn->prepare($query);
-		$stmt->bindParam(1, $this->nl);
-		$stmt->bindParam(2, $this->un);
-		$stmt->bindParam(3, $this->pw);
-		$stmt->bindParam(4, $this->rl);
+		$stmt->bindParam(':ka', $this->ka);
+		$stmt->bindParam(':nl', $this->nl);
+		$stmt->bindParam(':un', $this->un);
+		$stmt->bindParam(':pw', $this->pw);
+		$stmt->bindParam(':rl', $this->rl);
 		
 		if($stmt->execute()){
 			return true;
@@ -55,6 +58,41 @@ class User{
 		$this->nl = $row['nama_lengkap'];
 		$this->un = $row['username'];
 		$this->pw = $row['password'];
+	}
+
+	// used when filling up the update product form
+	function readAnggota(){
+		
+		$query = "SELECT * FROM " . $this->table_dua . " WHERE kode_anggota=:ka LIMIT 0,1";
+		$stmt = $this->conn->prepare( $query );
+		$stmt->bindParam(':ka', $this->ka);
+		$stmt->execute();
+
+		$row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+		$dataee = array();
+		$dataee['kode_anggota'] = $row['kode_anggota'];
+		$dataee['nama_anggota'] = $row['nama_anggota'];
+		$dataee['limit_anggota'] = $row['limit_anggota'];
+		$dataee['deadline'] = $row['deadline'];
+
+		return $dataee;
+	}
+
+	// used when filling up the update product form
+	function jumlahVoterTerdaftar(){
+		
+		$query = "SELECT COUNT(kode_anggota) AS jvterdaftar FROM " . $this->table_name . " WHERE kode_anggota=:ka LIMIT 0,1";
+		$stmt = $this->conn->prepare( $query );
+		$stmt->bindParam(':ka', $this->ka);
+		$stmt->execute();
+
+		$row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+		$dataee = array();
+		$dataee['jvterdaftar'] = $row['jvterdaftar'];
+
+		return $dataee;
 	}
 	
 	// update the product
