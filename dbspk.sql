@@ -73,7 +73,7 @@ INSERT INTO `value` (`id_nilai`, `ket_nilai`, `jum_nilai`) VALUES
 DROP TABLE IF EXISTS `pengguna`;
 CREATE TABLE `pengguna` (
   `id_pengguna` int(11) NOT NULL,
-  `kode_anggota` varchar(6) NOT NULL,
+  `kode_anggota` varchar(6) NULL,
   `nama_lengkap` varchar(255) NOT NULL,
   `username` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
@@ -108,7 +108,7 @@ CREATE TABLE `anggota` (
 --
 
 INSERT INTO `anggota` (`kode_anggota`, `nama_anggota`, `limit_anggota`, `deadline`) VALUES
-('ASG001', 'Assisigoing', 3, '');
+('ASG001', 'Assisigoing', 3, '2020-01-10');
 
 -- --------------------------------------------------------
 
@@ -167,7 +167,7 @@ ALTER TABLE `anggota`
 -- Indexes for table `pengguna`
 --
 ALTER TABLE `pengguna`
-  ADD PRIMARY KEY (`id_pengguna`,`kode_anggota`),
+  ADD PRIMARY KEY (`id_pengguna`),
   ADD KEY `kode_anggota` (`kode_anggota`);
 
 --
