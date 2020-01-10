@@ -15,7 +15,7 @@ class criteria{
 	
 	function insert(){
 		
-		$query = "insert into ".$this->table_name." values('',:kt,:tp,:jm)";
+		$query = "insert into ".$this->table_name." values(NULL,:kt,:tp,:jm)";
 		$stmt = $this->conn->prepare($query);
 		$stmt->bindParam(':kt', $this->kt);
 		$stmt->bindParam(':tp', $this->tp);

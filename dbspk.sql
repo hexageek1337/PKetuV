@@ -120,8 +120,8 @@ CREATE TABLE `ranking` (
   `id_candidate` int(11) NOT NULL,
   `id_kriteria` int(11) NOT NULL,
   `nilai_rangking` double NOT NULL,
-  `nilai_normalisasi` double NOT NULL,
-  `bobot_normalisasi` double NOT NULL
+  `nilai_normalisasi` double NULL,
+  `bobot_normalisasi` double NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --

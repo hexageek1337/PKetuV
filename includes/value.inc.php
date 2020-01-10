@@ -13,7 +13,7 @@ class value{
 	}
 	
 	function insert(){
-		$query = "insert into ".$this->table_name." values('',:kt,:jm)";
+		$query = "insert into ".$this->table_name." values(NULL,:kt,:jm)";
 		$stmt = $this->conn->prepare($query);
 		$stmt->bindParam(':kt', $this->kt);
 		$stmt->bindParam(':jm', $this->jm);

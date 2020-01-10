@@ -19,7 +19,7 @@ class ranking{
 	
 	function insert(){
 		
-		$query = "insert into ".$this->table_name." values(:ia,:ik,:nn,'','')";
+		$query = "insert into ".$this->table_name." values(:ia,:ik,:nn,NULL,NULL)";
 		$stmt = $this->conn->prepare($query);
 		$stmt->bindParam(':ia', $this->ia);
 		$stmt->bindParam(':ik', $this->ik);

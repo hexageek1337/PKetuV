@@ -15,7 +15,7 @@ class candidate{
 	
 	function insert(){
 		
-		$query = "insert into ".$this->table_name." values('',:ip,:kt,'')";
+		$query = "insert into ".$this->table_name." values(NULL,:ip,:kt,'')";
 		$stmt = $this->conn->prepare($query);
 		$stmt->bindParam(':ip', $this->ip);
 		$stmt->bindParam(':kt', $this->kt);
