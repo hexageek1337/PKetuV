@@ -6,7 +6,7 @@ CREATE TABLE `candidate` (
   `id_candidate` int(11) NOT NULL,
   `id_pengguna` int(11) NOT NULL,
   `nama_candidate` varchar(255) NOT NULL,
-  `hasil_candidate` double NOT NULL
+  `hasil_candidate` double NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
