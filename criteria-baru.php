@@ -50,15 +50,7 @@ if($_POST){
 				  </div>
 				  <div class="form-group">
 				    <label for="jm">Bobot criteria</label>
-				    <select class="form-control" id="jm" name="jm">
-				    	<?php
-						$stmt2 = $pgn->readAll();
-						while ($row2 = $stmt2->fetch(PDO::FETCH_ASSOC)){
-							extract($row2);
-							echo "<option value='{$jum_nilai}'>{$jum_nilai}</option>";
-						}
-					    ?>
-				    </select>
+				    <input type="text" class="form-control" id="jm" name="jm" placeholder="0 ...">
 				  </div>
 				  <button type="submit" class="btn btn-primary">Simpan</button>
 				  <button type="button" onclick="location.href='criteria.php'" class="btn btn-success">Kembali</button>

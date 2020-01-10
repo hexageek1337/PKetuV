@@ -229,11 +229,11 @@ class voting{
 	// delete the product
 	function delete(){
 	
-		$query = "DELETE FROM " . $this->table_name . " WHERE id_candidate = ? and id_kriteria = ?";
+		$query = "DELETE FROM " . $this->table_name . " WHERE id_candidate = :ia and id_kriteria = :ik";
 		
 		$stmt = $this->conn->prepare($query);
-		$stmt->bindParam(1, $this->ia);
-		$stmt->bindParam(2, $this->ik);
+		$stmt->bindParam(':ia', $this->ia);
+		$stmt->bindParam(':ik', $this->ik);
 
 		if($result = $stmt->execute()){
 			return true;

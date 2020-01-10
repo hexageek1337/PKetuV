@@ -19,11 +19,11 @@ class ranking{
 	
 	function insert(){
 		
-		$query = "insert into ".$this->table_name." values(?,?,?,'','')";
+		$query = "insert into ".$this->table_name." values(:ia,:ik,:nn,'','')";
 		$stmt = $this->conn->prepare($query);
-		$stmt->bindParam(1, $this->ia);
-		$stmt->bindParam(2, $this->ik);
-		$stmt->bindParam(3, $this->nn);
+		$stmt->bindParam(':ia', $this->ia);
+		$stmt->bindParam(':ik', $this->ik);
+		$stmt->bindParam(':nn', $this->nn);
 		
 		if($stmt->execute()){
 			return true;
@@ -94,11 +94,11 @@ class ranking{
 	// used when filling up the update product form
 	function readOne(){
 		
-		$query = "SELECT * FROM " . $this->table_name . " WHERE id_candidate=? and id_kriteria=? LIMIT 0,1";
+		$query = "SELECT * FROM " . $this->table_name . " WHERE id_candidate = :ia and id_kriteria = :ik LIMIT 0,1";
 
 		$stmt = $this->conn->prepare( $query );
-		$stmt->bindParam(1, $this->ia);
-		$stmt->bindParam(2, $this->ik);
+		$stmt->bindParam(':ia', $this->ia);
+		$stmt->bindParam(':ik', $this->ik);
 		$stmt->execute();
 
 		$row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -135,7 +135,6 @@ class ranking{
 	}
 	
 	function normalisasi(){
-
 		$query = "UPDATE 
 					" . $this->table_name . " 
 				SET 
@@ -186,11 +185,11 @@ class ranking{
 	// delete the product
 	function delete(){
 	
-		$query = "DELETE FROM " . $this->table_name . " WHERE id_candidate = ? and id_kriteria = ?";
+		$query = "DELETE FROM " . $this->table_name . " WHERE id_candidate = :ia and id_kriteria = :ik";
 		
 		$stmt = $this->conn->prepare($query);
-		$stmt->bindParam(1, $this->ia);
-		$stmt->bindParam(2, $this->ik);
+		$stmt->bindParam(':ia', $this->ia);
+		$stmt->bindParam(':ik', $this->ik);
 
 		if($result = $stmt->execute()){
 			return true;

@@ -30,7 +30,7 @@ if($_POST){
 		<div class="row">
 		  <div class="col-xs-12 col-sm-12 col-md-8">
 		  	<div class="page-header">
-			  <h5>Tambah value Preferensi</h5>
+			  <h5>Tambah Value Preferensi</h5>
 			</div>
 			
 			    <form method="post">

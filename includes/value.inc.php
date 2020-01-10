@@ -13,11 +13,10 @@ class value{
 	}
 	
 	function insert(){
-		
-		$query = "insert into ".$this->table_name." values('',?,?)";
+		$query = "insert into ".$this->table_name." values('',:kt,:jm)";
 		$stmt = $this->conn->prepare($query);
-		$stmt->bindParam(1, $this->kt);
-		$stmt->bindParam(2, $this->jm);
+		$stmt->bindParam(':kt', $this->kt);
+		$stmt->bindParam(':jm', $this->jm);
 		
 		if($stmt->execute()){
 			return true;
@@ -39,10 +38,10 @@ class value{
 	// used when filling up the update product form
 	function readOne(){
 		
-		$query = "SELECT * FROM " . $this->table_name . " WHERE id_nilai=? LIMIT 0,1";
+		$query = "SELECT * FROM " . $this->table_name . " WHERE id_nilai = :id LIMIT 0,1";
 
 		$stmt = $this->conn->prepare( $query );
-		$stmt->bindParam(1, $this->id);
+		$stmt->bindParam(':id', $this->id);
 		$stmt->execute();
 
 		$row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -80,10 +79,10 @@ class value{
 	// delete the product
 	function delete(){
 	
-		$query = "DELETE FROM " . $this->table_name . " WHERE id_nilai = ?";
+		$query = "DELETE FROM " . $this->table_name . " WHERE id_nilai = :id";
 		
 		$stmt = $this->conn->prepare($query);
-		$stmt->bindParam(1, $this->id);
+		$stmt->bindParam(':id', $this->id);
 
 		if($result = $stmt->execute()){
 			return true;

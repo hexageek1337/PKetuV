@@ -40,10 +40,10 @@ class candidate{
 	// used when filling up the update product form
 	function readOne(){
 		
-		$query = "SELECT * FROM " . $this->table_name . " WHERE id_candidate=? LIMIT 0,1";
+		$query = "SELECT * FROM " . $this->table_name . " WHERE id_candidate = :id LIMIT 0,1";
 
-		$stmt = $this->conn->prepare( $query );
-		$stmt->bindParam(1, $this->id);
+		$stmt = $this->conn->prepare($query);
+		$stmt->bindParam(':id', $this->id);
 		$stmt->execute();
 
 		$row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -56,10 +56,10 @@ class candidate{
 	// used when filling up the update product form
 	function readKandidatUser(){
 		
-		$query = "SELECT * FROM " . $this->table_name . " WHERE id_pengguna=? LIMIT 0,1";
+		$query = "SELECT * FROM " . $this->table_name . " WHERE id_pengguna = :ip LIMIT 0,1";
 
 		$stmt = $this->conn->prepare( $query );
-		$stmt->bindParam(1, $this->ip);
+		$stmt->bindParam(':ip', $this->ip);
 		$stmt->execute();
 
 		return $stmt->fetchColumn();
@@ -95,10 +95,10 @@ class candidate{
 	// delete the product
 	function delete(){
 	
-		$query = "DELETE FROM " . $this->table_name . " WHERE id_candidate = ?";
+		$query = "DELETE FROM " . $this->table_name . " WHERE id_candidate = :id";
 		
 		$stmt = $this->conn->prepare($query);
-		$stmt->bindParam(1, $this->id);
+		$stmt->bindParam(':id', $this->id);
 
 		if($result = $stmt->execute()){
 			return true;

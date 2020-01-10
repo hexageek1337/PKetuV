@@ -15,11 +15,11 @@ class criteria{
 	
 	function insert(){
 		
-		$query = "insert into ".$this->table_name." values('',?,?,?)";
+		$query = "insert into ".$this->table_name." values('',:kt,:tp,:jm)";
 		$stmt = $this->conn->prepare($query);
-		$stmt->bindParam(1, $this->kt);
-		$stmt->bindParam(2, $this->tp);
-		$stmt->bindParam(3, $this->jm);
+		$stmt->bindParam(':kt', $this->kt);
+		$stmt->bindParam(':tp', $this->tp);
+		$stmt->bindParam(':jm', $this->jm);
 		
 		if($stmt->execute()){
 			return true;
@@ -41,10 +41,10 @@ class criteria{
 	// used when filling up the update product form
 	function readOne(){
 		
-		$query = "SELECT * FROM " . $this->table_name . " WHERE id_kriteria=? LIMIT 0,1";
+		$query = "SELECT * FROM " . $this->table_name . " WHERE id_kriteria = :id LIMIT 0,1";
 
 		$stmt = $this->conn->prepare( $query );
-		$stmt->bindParam(1, $this->id);
+		$stmt->bindParam(':id', $this->id);
 		$stmt->execute();
 
 		$row = $stmt->fetch(PDO::FETCH_ASSOC);

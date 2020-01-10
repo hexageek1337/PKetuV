@@ -46,10 +46,10 @@ class User{
 	// used when filling up the update product form
 	function readOne(){
 		
-		$query = "SELECT * FROM " . $this->table_name . " WHERE id_pengguna=? LIMIT 0,1";
+		$query = "SELECT * FROM " . $this->table_name . " WHERE id_pengguna = :id LIMIT 0,1";
 
 		$stmt = $this->conn->prepare( $query );
-		$stmt->bindParam(1, $this->id);
+		$stmt->bindParam(':id', $this->id);
 		$stmt->execute();
 
 		$row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -63,7 +63,7 @@ class User{
 	// used when filling up the update product form
 	function readAnggota(){
 		
-		$query = "SELECT * FROM " . $this->table_dua . " WHERE kode_anggota=:ka LIMIT 0,1";
+		$query = "SELECT * FROM " . $this->table_dua . " WHERE kode_anggota = :ka LIMIT 0,1";
 		$stmt = $this->conn->prepare( $query );
 		$stmt->bindParam(':ka', $this->ka);
 		$stmt->execute();
@@ -160,10 +160,10 @@ class User{
 	// delete the product
 	function delete(){
 	
-		$query = "DELETE FROM " . $this->table_name . " WHERE id_pengguna = ?";
+		$query = "DELETE FROM " . $this->table_name . " WHERE id_pengguna = :id";
 		
 		$stmt = $this->conn->prepare($query);
-		$stmt->bindParam(1, $this->id);
+		$stmt->bindParam(':id', $this->id);
 
 		if($result = $stmt->execute()){
 			return true;
