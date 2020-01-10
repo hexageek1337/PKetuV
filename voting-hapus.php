@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('Asia/Jakarta');
 include_once "includes/config.php";
 $database = new Config();
 $db = $database->getConnection();

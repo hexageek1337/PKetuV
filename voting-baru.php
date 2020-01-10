@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('Asia/Kolkata');
 include_once 'header.php';
 include_once 'includes/candidate.inc.php';
 $pgn1 = new candidate($db);

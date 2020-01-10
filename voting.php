@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('Asia/Jakarta');
 include_once 'header.php';
 if (isset($_SESSION['role'])) {
     if ($_SESSION['role'] != base64_encode('Voter')) { ?>
