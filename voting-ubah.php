@@ -1,5 +1,5 @@
 <?php
-date_default_timezone_set('Asia/Kolkata');
+date_default_timezone_set('Asia/Jakarta');
 include_once 'header.php';
 include_once 'includes/candidate.inc.php';
 include_once 'includes/criteria.inc.php';
@@ -52,7 +52,6 @@ if ($dateQ <= $dataAnggota['deadline']) {
 				  <div class="form-group">
 				    <label for="nn">value</label>
 				    <select class="form-control" id="nn" name="nn">
-				    	<option><?php echo $eks->nn; ?></option>
 				    	<?php
 						$stmt4 = $pgn3->readAll();
 						while ($row4 = $stmt4->fetch(PDO::FETCH_ASSOC)){

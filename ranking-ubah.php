@@ -41,18 +41,18 @@ if($_POST){
 			</div>
 			
 			    <form method="post">
+			    <input class="form-control" type="hidden" id="ia" name="ia" value="<?=$ia?>">
+			    <input class="form-control" type="hidden" id="ik" name="ik" value="<?=$ik?>">
 				  <div class="form-group">
 				    <label for="nn">value</label>
-				    <select class="form-control" id="nn" name="nn">
-				    	<option><?php echo $eks->nn; ?></option>
-				    	<?php
-						$stmt4 = $pgn3->readAll();
-						while ($row4 = $stmt4->fetch(PDO::FETCH_ASSOC)){
-							extract($row4);
-							echo "<option value='{$jum_nilai}'>{$ket_nilai}</option>";
-						}
-					    ?>
-				    </select>
+				    <div class="row" id="nn">
+				  		<div class="col-xs-10">
+				  			<input class="form-control" type="text" id="nndata" name="nn" value="" readonly>
+				  		</div>
+				  		<div class="col-xs-2">
+				  			<a class="btn btn-primary" id="getdataavg">GET Data</a>
+				  		</div>
+				  	</div>
 				  </div>
 				  <button type="submit" class="btn btn-primary">Ubah</button>
 				  <button type="button" onclick="location.href='ranking.php'" class="btn btn-success">Kembali</button>
