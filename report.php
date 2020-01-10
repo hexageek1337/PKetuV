@@ -282,7 +282,6 @@ $stmty = $pro->readKhusus();
     <script type="text/javascript" src="vendor/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="js/dataTables.bootstrap.min.js"></script>
-    <script type="text/javascript" src="node_modules/sweetalert/dist/sweetalert.min.js"></script>
     <script type="text/javascript" src="js/custom.js"></script>
     <script type="text/javascript" src="js/jquery-printme.js"></script>
     <script type="text/javascript">

@@ -76,6 +76,7 @@ $db = $config->getConnection();
 				<?php } elseif ($_SESSION['role'] === base64_encode('Admin')) { ?>
 				<li><a href="profile.php">Profile</a></li>
 				<li><a href="user.php">Manager Pengguna</a></li>
+				<li><a href="anggota.php">Manager Anggota</a></li>
 				<li role="separator" class="divider"></li>
 				<?php } elseif ($_SESSION['role'] === base64_encode('Voter')) { ?>
 				<li><a href="profile.php">Profile</a></li>

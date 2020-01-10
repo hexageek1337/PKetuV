@@ -5,7 +5,7 @@ $id = isset($_GET['id']) ? $_GET['id'] : die('ERROR: missing ID.');
 include_once 'includes/value.inc.php';
 $eks = new value($db);
 
-$eks->id = $id;
+$eks->id = intval($id);
 
 $eks->readOne();
 

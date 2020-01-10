@@ -213,11 +213,16 @@ ALTER TABLE `pengguna`
 -- Constraints for table `candidate`
 --
 ALTER TABLE `candidate`
-  ADD CONSTRAINT `candidate_ibfk_1` FOREIGN KEY (`id_pengguna`) REFERENCES `pengguna` (`id_pengguna`);
+	ADD CONSTRAINT `candidate_ibfk_1` FOREIGN KEY (`id_pengguna`) REFERENCES `pengguna` (`id_pengguna`);
 
 --
 -- Constraints for table `ranking`
 --
 ALTER TABLE `ranking`
-  ADD CONSTRAINT `rangking_ibfk_1` FOREIGN KEY (`id_candidate`) REFERENCES `candidate` (`id_candidate`),
-  ADD CONSTRAINT `rangking_ibfk_2` FOREIGN KEY (`id_kriteria`) REFERENCES `criteria` (`id_kriteria`);
+	ADD CONSTRAINT `rangking_ibfk_1` FOREIGN KEY (`id_candidate`) REFERENCES `candidate` (`id_candidate`),
+	ADD CONSTRAINT `rangking_ibfk_2` FOREIGN KEY (`id_kriteria`) REFERENCES `criteria` (`id_kriteria`);
+
+ALTER TABLE `voting`
+	ADD CONSTRAINT `candidatevotingFK` FOREIGN KEY (`id_candidate`) REFERENCES `candidate`(`id_candidate`),
+	ADD CONSTRAINT `criteriavotingFK` FOREIGN KEY (`id_kriteria`) REFERENCES `criteria`(`id_kriteria`),
+	ADD CONSTRAINT `penggunavotingFK` FOREIGN KEY (`id_pengguna`) REFERENCES `pengguna`(`id_pengguna`);

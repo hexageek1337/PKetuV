@@ -14,10 +14,8 @@ if($_POST){
 	
 	if($login->login()){
 		echo "<script>location.href='index.php'</script>";
-	}
-
-	else{
-		echo "<script>alert('Username/Password Salah')</script>";
+	} else {
+		echo "<script>alert('Login gagal! Mohon diperiksa kembali username dan password Anda!')</script>";
 	}
 }
 ?>
@@ -88,7 +86,7 @@ if($_POST){
 					<span class="checkgraph fa fa-check"></span>
 					Remember me?
 				</label>
-				<button type="submit" class="login--form__button btn btn-default" value="Masuk">Masuk</button>
+				<button type="submit" class="login--form__button btn btn-default" id="logingan" value="Masuk">Masuk</button>
 			</form>
 			<footer class="login--footer text-center">
 				<p class="login--footer__text">Or you can login with one of the following</p>
@@ -103,9 +101,9 @@ if($_POST){
 	</div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="js/custom.js"></script>
+    <script type="text/javascript" src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/custom.js"></script>
   </body>
 </html>
