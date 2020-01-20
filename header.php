@@ -14,8 +14,23 @@ $db = $config->getConnection();
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="https://www.phpindonesia.id/uploads/favicon.png">
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="author" content="<?=$config->author?>">
+    <meta name="description" content="<?=$config->description?>"/>
+    <meta name="keywords" content="<?=$config->keywords?>" />
+	<link rel="alternate" href="<?=$config->link()?>" hreflang="x-default" />
+	<!-- Meta Crawl -->
+	<meta name="alexaVerifyID" content="<?=$config->alexa?>"/>
+	<meta name="google-site-verification" content="<?=$config->google?>" />
+	<!-- Meta Facebook -->
+	<meta property="fb:pages" content="<?=$config->fbpagesid?>" />
+	<!-- Meta Twitter -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site:id" content="<?=$config->twsiteid?>" />
+	<meta name="twitter:domain" content="<?=$_SERVER['HTTP_HOST']?>">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>pKetuV</title>
+    <title><?=$config->title?></title>
 
     <!-- Bootstrap -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
