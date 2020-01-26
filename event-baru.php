@@ -2,8 +2,8 @@
 include_once 'header.php';
 if($_POST){
 	
-	include_once 'includes/anggota.inc.php';
-	$eks = new anggota($db);
+	include_once 'includes/event.inc.php';
+	$eks = new event($db);
 
 	$eks->ka = addslashes($_POST['ka']);
 	$eks->na = addslashes($_POST['na']);
@@ -14,7 +14,7 @@ if($_POST){
 ?>
 <div class="alert alert-success alert-dismissible" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <strong>Berhasil Tambah Data!</strong> Tambah lagi atau <a href="anggota.php">lihat semua data</a>.
+  <strong>Berhasil Tambah Data!</strong> Tambah lagi atau <a href="event.php">lihat semua data</a>.
 </div>
 <?php
 	}
@@ -32,20 +32,20 @@ if($_POST){
 		<div class="row">
 		  <div class="col-xs-12 col-sm-12 col-md-8">
 		  	<div class="page-header">
-			  <h5>Tambah Anggota</h5>
+			  <h5>Tambah Event</h5>
 			</div>
 			
 			    <form method="post">
 				  <div class="form-group">
-				    <label for="ka">Kode Anggota</label>
+				    <label for="ka">Kode Event</label>
 				    <input type="text" class="form-control" id="ka" name="ka" maxlength="6" required>
 				  </div>
 				  <div class="form-group">
-				    <label for="na">Nama Anggota</label>
+				    <label for="na">Nama Event</label>
 				    <input type="text" class="form-control" id="na" name="na" required>
 				  </div>
 				  <div class="form-group">
-				    <label for="la">Limit Anggota</label>
+				    <label for="la">Limit Event</label>
 				    <input type="number" class="form-control" id="la" name="la" required>
 				  </div>
 				  <div class="form-group">
@@ -53,7 +53,7 @@ if($_POST){
 				    <input type="date" class="form-control" id="dl" name="dl" required>
 				  </div>
 				  <button type="submit" class="btn btn-primary">Simpan</button>
-				  <button type="button" onclick="location.href='anggota.php'" class="btn btn-success">Kembali</button>
+				  <button type="button" onclick="location.href='event.php'" class="btn btn-success">Kembali</button>
 				</form>
 			  
 		  </div>

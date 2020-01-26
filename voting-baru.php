@@ -9,10 +9,10 @@ include_once 'includes/value.inc.php';
 $pgn3 = new value($db);
 include_once 'includes/voting.inc.php';
 $eks = new voting($db);
-$dateQ = date('Y-m-d');
-$dataAnggota = $eks->readAnggotaDeadline();
+$dateQ = date('Y-m-d h:i:s');
+$dataevent = $eks->readeventDeadline();
 
-if ($dateQ <= $dataAnggota['deadline']) {
+if ($dateQ <= $dataevent['deadline']) {
 if($_POST){
 		$eks->ia = addslashes($_POST['ia']);
 		$eks->ik = addslashes($_POST['ik']);

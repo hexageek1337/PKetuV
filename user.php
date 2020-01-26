@@ -39,7 +39,7 @@ $stmt = $pro->readAll();
                 <td><?php echo $row['id_pengguna'] ?></td>
     	    <td><?php echo $row['nama_lengkap'] ?></td>
     	    <td><?php echo $row['username'] ?></td>
-            <td><?php echo $row['role'] ?> <div class="label label-info"><?php echo $row['kode_anggota'] ?></div></td>
+            <td><?php echo $row['role'] ?> <div class="label label-info"><?php echo $row['kode_event'] ?></div></td>
             <td class="text-center">
             <?php
             $eks->ip = $row['id_pengguna'];

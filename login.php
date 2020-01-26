@@ -68,7 +68,7 @@ if($_POST){
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		  </button>
-		  <a class="navbar-brand" href="/login.php">pKetuV</a>
+		  <a class="navbar-brand" href="<?=$config->link($config->folder)?>/login.php"><?=$config->title?></a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->

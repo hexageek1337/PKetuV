@@ -30,7 +30,7 @@ $db = $config->getConnection();
 	<meta name="twitter:site:id" content="<?=$config->twsiteid?>" />
 	<meta name="twitter:domain" content="<?=$_SERVER['HTTP_HOST']?>">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title><?=$config->title?></title>
+    <title><?=$config->title?> - <?=$config->slogan?></title>
 
     <!-- Bootstrap -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -58,7 +58,7 @@ $db = $config->getConnection();
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		  </button>
-		  <a class="navbar-brand" href="/">pKetuV</a>
+		  <a class="navbar-brand" href="<?=$config->link($config->folder)?>"><?=$config->title?></a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
@@ -91,7 +91,7 @@ $db = $config->getConnection();
 				<?php } elseif ($_SESSION['role'] === base64_encode('Admin')) { ?>
 				<li><a href="profile.php">Profile</a></li>
 				<li><a href="user.php">Manager Pengguna</a></li>
-				<li><a href="anggota.php">Manager Anggota</a></li>
+				<li><a href="event.php">Manager Event</a></li>
 				<li role="separator" class="divider"></li>
 				<?php } elseif ($_SESSION['role'] === base64_encode('Voter')) { ?>
 				<li><a href="profile.php">Profile</a></li>

@@ -39,11 +39,11 @@ if($_POST){
 			    <form method="post">
 				  <div class="form-group">
 				    <label for="kt">Nama criteria</label>
-				    <input type="text" class="form-control" id="kt" name="kt" value="<?php echo $eks->kt; ?>">
+				    <input type="text" class="form-control" id="kt" name="kt" value="<?php echo $eks->kt; ?>" required>
 				  </div>
 				  <div class="form-group">
 				    <label for="tp">Tipe criteria</label>
-				    <select class="form-control" id="tp" name="tp">
+				    <select class="form-control" id="tp" name="tp" required>
 				    	<option><?php echo $eks->tp; ?></option>
 				    	<option value='benefit'>Benefit</option>
 				    	<option value='cost'>Cost</option>
@@ -51,7 +51,7 @@ if($_POST){
 				  </div>
 				  <div class="form-group">
 				    <label for="jm">Bobot criteria</label>
-				    <input type="text" class="form-control" id="jm" name="jm" placeholder="0 ...">
+				    <input type="text" class="form-control" id="jm" name="jm" placeholder="0 ..." min="0" max="1" required>
 				  </div>
 				  <button type="submit" class="btn btn-primary">Ubah</button>
 				  <button type="button" onclick="location.href='criteria.php'" class="btn btn-success">Kembali</button>

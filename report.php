@@ -36,7 +36,7 @@ $db = $config->getConnection();
 	<meta name="twitter:site:id" content="<?=$config->twsiteid?>" />
 	<meta name="twitter:domain" content="<?=$_SERVER['HTTP_HOST']?>">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title><?=$config->title?></title>
+    <title>Report - <?=$config->title?></title>
 
     <!-- Bootstrap -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -64,13 +64,13 @@ $db = $config->getConnection();
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		  </button>
-		  <a class="navbar-brand" href="/">pKetuV</a>
+		  <a class="navbar-brand" href="<?=$config->link($config->folder)?>"><?=$config->title?></a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		  <ul class="nav navbar-nav">
-		  	<li><a href="index.php">Home</a></li>
+			<li><a href="index.php">Home</a></li>
 			<?php if (isset($_SESSION['role'])) {
 				if ($_SESSION['role'] === base64_encode('Peserta')) { ?>
 					<li><a href="report.php">Laporan</a></li>
@@ -80,6 +80,8 @@ $db = $config->getConnection();
 			<li><a href="candidate.php">Kandidat</a></li>
 			<li><a href="ranking.php">Rangking</a></li>
 			<li><a href="report.php">Laporan</a></li>
+			<?php } elseif ($_SESSION['role'] === base64_encode('Voter')) { ?>
+			<li><a href="voting.php">Voting</a></li>
 			<?php }
 			} ?>
 		  </ul>
@@ -88,16 +90,20 @@ $db = $config->getConnection();
 			<li class="dropdown">
 			  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-cog"></span> <span class="caret"></span></a>
 			  <ul class="dropdown-menu">
-				<?php if (isset($_SESSION['role'])) {
+			  	<?php if (isset($_SESSION['role'])) {
 				if ($_SESSION['role'] === base64_encode('Peserta')) { ?>
 					<li><a href="profile.php">Profile</a></li>
+					<li role="separator" class="divider"></li>
 				<?php } elseif ($_SESSION['role'] === base64_encode('Admin')) { ?>
 				<li><a href="profile.php">Profile</a></li>
 				<li><a href="user.php">Manager Pengguna</a></li>
-				<li><a href="anggota.php">Manager Anggota</a></li>
+				<li><a href="event.php">Manager Event</a></li>
+				<li role="separator" class="divider"></li>
+				<?php } elseif ($_SESSION['role'] === base64_encode('Voter')) { ?>
+				<li><a href="profile.php">Profile</a></li>
+				<li role="separator" class="divider"></li>
 				<?php }
 				} ?>
-				<li role="separator" class="divider"></li>
 				<li><a href="logout.php">Logout</a></li>
 			  </ul>
 			</li>
@@ -288,7 +294,7 @@ $stmty = $pro->readKhusus();
 	<?php } } ?>
 	<hr class="hr-footer">
     <div class="footer">
-        <footer class="text-center">&copy; <?=date("Y")?> PKetuV Solution <i class="fas fa-heart"></i></footer>
+        <footer class="text-center">&copy; <?=date("Y")?> <?=$config->title?> <i class="fas fa-heart"></i></footer>
     </div>
 	</div>
 
@@ -301,6 +307,12 @@ $stmty = $pro->readKhusus();
     <script type="text/javascript" src="js/custom.js"></script>
     <script type="text/javascript" src="js/jquery-printme.js"></script>
     <script type="text/javascript">
+    	$('#table-akhir').DataTable({
+    		"lengthChange": true,
+    		"lengthMenu": [[5, 10, 25, 50, 100], [5, 10, 25, 50, 100]],
+    		"order": [[ 5, "desc" ]]
+    	});
+
     	$('#cetak').click(function() {
 
     		$("#ranking").printMe({ "path": "css/bootstrap.min.css", "title": "Report HASIL AKHIR" }); 

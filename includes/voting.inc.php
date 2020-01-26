@@ -3,7 +3,7 @@ class voting{
 	
 	private $conn;
 	private $table_name = "voting";
-	private $table_dua = "anggota";
+	private $table_dua = "event";
 	
 	public $ia;
 	public $id_pengguna;
@@ -20,7 +20,7 @@ class voting{
 	}
 
 	// used when filling up the update product form
-	function readAnggotaDeadline(){
+	function readeventDeadline(){
 		
 		$query = "SELECT deadline FROM " . $this->table_dua . " LIMIT 0,1";
 		$stmt = $this->conn->prepare( $query );

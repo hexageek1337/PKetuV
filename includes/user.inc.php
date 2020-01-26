@@ -3,7 +3,7 @@ class User{
 	
 	private $conn;
 	private $table_name = "pengguna";
-	private $table_dua = "anggota";
+	private $table_dua = "event";
 	
 	public $id;
 	public $ka;
@@ -61,9 +61,9 @@ class User{
 	}
 
 	// used when filling up the update product form
-	function readAnggota(){
+	function readevent(){
 		
-		$query = "SELECT * FROM " . $this->table_dua . " WHERE kode_anggota = :ka LIMIT 0,1";
+		$query = "SELECT * FROM " . $this->table_dua . " WHERE kode_event = :ka LIMIT 0,1";
 		$stmt = $this->conn->prepare( $query );
 		$stmt->bindParam(':ka', $this->ka);
 		$stmt->execute();
@@ -71,9 +71,9 @@ class User{
 		$row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 		$dataee = array();
-		$dataee['kode_anggota'] = $row['kode_anggota'];
-		$dataee['nama_anggota'] = $row['nama_anggota'];
-		$dataee['limit_anggota'] = $row['limit_anggota'];
+		$dataee['kode_event'] = $row['kode_event'];
+		$dataee['nama_event'] = $row['nama_event'];
+		$dataee['limit_event'] = $row['limit_event'];
 		$dataee['deadline'] = $row['deadline'];
 
 		return $dataee;
@@ -82,7 +82,7 @@ class User{
 	// used when filling up the update product form
 	function jumlahVoterTerdaftar(){
 		
-		$query = "SELECT COUNT(kode_anggota) AS jvterdaftar FROM " . $this->table_name . " WHERE kode_anggota=:ka LIMIT 0,1";
+		$query = "SELECT COUNT(kode_event) AS jvterdaftar FROM " . $this->table_name . " WHERE kode_event=:ka LIMIT 0,1";
 		$stmt = $this->conn->prepare( $query );
 		$stmt->bindParam(':ka', $this->ka);
 		$stmt->execute();

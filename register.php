@@ -10,10 +10,10 @@ if($_POST AND $_POST['ka']){
 
     $eks->ka = addslashes($_POST['ka']);
 
-    $dataanggota = $eks->readAnggota();
+    $dataevent = $eks->readevent();
     $datavoter = $eks->jumlahVoterTerdaftar();
 
-    if ($datavoter['jvterdaftar'] < $dataanggota['limit_anggota']) {
+    if ($datavoter['jvterdaftar'] < $dataevent['limit_event']) {
 	    $eks->nl = addslashes($_POST['nl']);
 	    $eks->un = addslashes($_POST['un']);
 	    $eks->pw = md5(addslashes($_POST['pw']));
@@ -81,7 +81,7 @@ if($_POST AND $_POST['ka']){
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		  </button>
-		  <a class="navbar-brand" href="/login.php">pKetuV</a>
+		  <a class="navbar-brand" href="<?=$config->link($config->folder)?>/login.php"><?=$config->title?></a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
@@ -103,7 +103,7 @@ if($_POST AND $_POST['ka']){
 			<form class="login--form" method="post">
 				<div class="login--form__input-area input-group">
 					<span class="input-group-addon"><span class="fa fa-user"></span></span>
-					<input name="ka" type="text" class="form-control" placeholder="Masukkan kode anggota anda ..." />
+					<input name="ka" type="text" class="form-control" placeholder="Masukkan kode event anda ..." />
 				</div>
 				<div class="login--form__input-area input-group">
 					<span class="input-group-addon"><span class="fa fa-at"></span></span>

@@ -6,10 +6,10 @@ $db = $database->getConnection();
 
 include_once 'includes/voting.inc.php';
 $pro = new voting($db);
-$dateQ = date('Y-m-d');
-$dataAnggota = $pro->readAnggotaDeadline();
+$dateQ = date('Y-m-d h:i:s');
+$dataevent = $pro->readeventDeadline();
 
-if ($dateQ <= $dataAnggota['deadline']) {
+if ($dateQ <= $dataevent['deadline']) {
 	$ia = isset($_GET['ia']) ? $_GET['ia'] : die('ERROR: missing ID.');
 	$pro->ia = $ia;
 	$ik = isset($_GET['ik']) ? $_GET['ik'] : die('ERROR: missing ID.');

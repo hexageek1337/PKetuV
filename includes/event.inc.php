@@ -1,8 +1,8 @@
 <?php
-class anggota{
+class event{
 	
 	private $conn;
-	private $table_name = "anggota";
+	private $table_name = "event";
 	
 	public $ka;
 	public $na;
@@ -32,7 +32,7 @@ class anggota{
 	
 	function readAll(){
 
-		$query = "SELECT * FROM ".$this->table_name." ORDER BY kode_anggota ASC";
+		$query = "SELECT * FROM ".$this->table_name." ORDER BY kode_event ASC";
 		$stmt = $this->conn->prepare($query);
 		$stmt->execute();
 		
@@ -42,7 +42,7 @@ class anggota{
 	// used when filling up the update product form
 	function readOne(){
 		
-		$query = "SELECT * FROM " . $this->table_name . " WHERE kode_anggota LIKE %:ka%";
+		$query = "SELECT * FROM " . $this->table_name . " WHERE kode_event LIKE %:ka%";
 
 		$stmt = $this->conn->prepare($query);
 		$stmt->bindParam(':ka', $this->ka);
@@ -51,9 +51,9 @@ class anggota{
 		$row = $stmt->fetch(PDO::FETCH_ASSOC);
 		
 		$dataee = array();
-		$this->ka = $row['kode_anggota'];
-		$this->na = $row['nama_anggota'];
-		$this->la = $row['limit_anggota'];
+		$this->ka = $row['kode_event'];
+		$this->na = $row['nama_event'];
+		$this->la = $row['limit_event'];
 		$this->dl = $row['deadline'];
 	}
 	
@@ -63,11 +63,11 @@ class anggota{
 		$query = "UPDATE 
 					" . $this->table_name . " 
 				SET 
-					nama_anggota = :na,  
-					limit_anggota = :la,
+					nama_event = :na,  
+					limit_event = :la,
 					deadline = :dl
 				WHERE
-					kode_anggota = :ka";
+					kode_event = :ka";
 
 		$stmt = $this->conn->prepare($query);
 
@@ -87,7 +87,7 @@ class anggota{
 	// delete the product
 	function delete(){
 	
-		$query = "DELETE FROM " . $this->table_name . " WHERE kode_anggota = :ka";
+		$query = "DELETE FROM " . $this->table_name . " WHERE kode_event = :ka";
 		
 		$stmt = $this->conn->prepare($query);
 		$stmt->bindParam(':ka', $this->ka);

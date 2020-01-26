@@ -2,8 +2,8 @@
 include_once 'header.php';
 $ka = isset($_GET['ka']) ? $_GET['ka'] : die('ERROR: missing ka.');
 
-include_once 'includes/anggota.inc.php';
-$eks = new anggota($db);
+include_once 'includes/event.inc.php';
+$eks = new event($db);
 
 $eks->ka = $ka;
 $eks->readOne();
@@ -15,7 +15,7 @@ if($_POST){
 	$eks->dl = addslashes($_POST['dl']);
 	
 	if($eks->update()){
-		echo "<script>location.href='anggota.php'</script>";
+		echo "<script>location.href='event.php'</script>";
 	} else{
 ?>
 <div class="alert alert-danger alert-dismissible" role="alert">
@@ -29,20 +29,20 @@ if($_POST){
 		<div class="row">
 		  <div class="col-xs-12 col-sm-12 col-md-8">
 		  	<div class="page-header">
-			  <h5>Ubah Anggota</h5>
+			  <h5>Ubah event</h5>
 			</div>
 			
 			    <form method="post">
 				  <div class="form-group">
-				    <label for="ka">Kode Anggota</label>
+				    <label for="ka">Kode event</label>
 				    <input type="text" class="form-control" id="ka" name="ka" value="<?=$ka?>" readonly>
 				  </div>
 				  <div class="form-group">
-				    <label for="na">Nama Anggota</label>
+				    <label for="na">Nama event</label>
 				    <input type="text" class="form-control" id="na" name="na" value="<?=$eks->na?>">
 				  </div>
 				  <div class="form-group">
-				    <label for="la">Limit Anggota</label>
+				    <label for="la">Limit event</label>
 				    <input type="number" class="form-control" id="la" name="la" value="<?=$eks->la?>">
 				  </div>
 				  <div class="form-group">
@@ -50,7 +50,7 @@ if($_POST){
 				    <input type="date" class="form-control" id="dl" name="dl" value="<?=$eks->dl?>">
 				  </div>
 				  <button type="submit" class="btn btn-primary">Ubah</button>
-				  <button type="button" onclick="location.href='anggota.php'" class="btn btn-success">Kembali</button>
+				  <button type="button" onclick="location.href='event.php'" class="btn btn-success">Kembali</button>
 				</form>
 			  
 		  </div>

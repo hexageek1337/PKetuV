@@ -1,6 +1,6 @@
     <hr class="hr-footer">
     <div class="footer">
-        <footer class="text-center">&copy; <?=date("Y")?> PKetuV Solution <i class="fas fa-heart"></i></footer>
+        <footer class="text-center">&copy; <?=date("Y")?> <?=$config->title?> <i class="fas fa-heart"></i></footer>
     </div>
 	</div>
 
@@ -13,11 +13,6 @@
     <script type="text/javascript" src="js/custom.js"></script>
     <script type="text/javascript">
     	$(document).ready(function() {
-            <?php
-            if (isset($_SESSION['']) AND $_SESSION[''] == '') { ?>
-            swal("Profile Setting", "Nama anda belum disimpan ke database, segera isi pada menu Profile!", "warning");
-            <?php } ?>
-
             $("#getdataavg").click(function(){
                 var kandidat = document.getElementById("ia").value;
                 var kriteria = document.getElementById("ik").value;
@@ -31,7 +26,7 @@
             
             $('#tabeldata').DataTable({
                 "lengthChange": true,
-                "lengthMenu": [[5, 10, 25, 50], [5, 10, 25, 50]]
+                "lengthMenu": [[5, 10, 25, 50, 100], [5, 10, 25, 50, 100]]
             });
 		});
     </script>

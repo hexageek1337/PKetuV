@@ -11,10 +11,10 @@ $pgn3 = new value($db);
 include_once 'includes/voting.inc.php';
 $eks = new voting($db);
 
-$dateQ = date('Y-m-d');
-$dataAnggota = $eks->readAnggotaDeadline();
+$dateQ = date('Y-m-d h:i:s');
+$dataevent = $eks->readeventDeadline();
 
-if ($dateQ <= $dataAnggota['deadline']) {
+if ($dateQ <= $dataevent['deadline']) {
 	$ia = isset($_GET['ia']) ? intval($_GET['ia']) : die('ERROR: missing ID.');
 	$ik = isset($_GET['ik']) ? intval($_GET['ik']) : die('ERROR: missing ID.');
 	$eks->ia = $ia;

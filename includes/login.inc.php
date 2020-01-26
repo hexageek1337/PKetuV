@@ -21,6 +21,7 @@ class Login
             $_SESSION['nama_lengkap'] = $user['nama_lengkap'];
             $_SESSION['id_pengguna'] = $user['id_pengguna'];
             $_SESSION['username'] = $user['username'];
+            $_SESSION['kdevent'] = $user['kode_event'];
             $_SESSION['role'] = base64_encode($user['role']);
             return $user['nama_lengkap'];
         }

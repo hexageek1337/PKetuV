@@ -15,10 +15,10 @@ $pro2 = new criteria($db);
 $stmt2 = $pro2->readAll();
 include_once 'includes/voting.inc.php';
 $pro = new voting($db);
-$dateQ = date('Y-m-d');
-$dataAnggota = $pro->readAnggotaDeadline();
+$dateQ = date('Y-m-d h:i:s');
+$dataevent = $pro->readeventDeadline();
 
-if ($dateQ <= $dataAnggota['deadline']) {
+if ($dateQ <= $dataevent['deadline']) {
 $pro->id_pengguna = intval($_SESSION['id_pengguna']);
 $stmt = $pro->readKhusus();
 ?>
