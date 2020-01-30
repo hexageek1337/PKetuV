@@ -6,7 +6,7 @@
 }
 
 #panel-kriteria {
-  background: #ffc414;
+  background: #e17055;
   border: none;
   color: white;
 }
@@ -18,27 +18,27 @@
 }
 /* Line Footer */
 .hr-footer {
-  color: #ffc414;
+  color: #e17055;
   border-radius: 1px;
-  border-color: #ffc414;
+  border-color: #e17055;
   border-width: medium;
 }
 /* Background List */
-#bg-hasil{background: #ffc414;color: white;}
+#bg-hasil{background: #e17055;color: white;}
 /* Custom Button Tambah */
-#btn-tambah{background: #ffc414;color: white;border: none;}
+#btn-tambah{background: #e17055;color: white;border: none;}
 #btn-tambah:hover{background: #f6be18;transition: all 0.8s;}
 /* Custom Navbar */
 .navbar-custom {
-  background-color: #ffc414;
-  border-color: #f6be18;
+  background-color: #e17055;
+  border-color: #cf5d42;
 }
 .navbar-custom .navbar-brand {
   color: #ffffff;
 }
 .navbar-custom .navbar-brand:hover,
 .navbar-custom .navbar-brand:focus {
-  color: #fff6db;
+  color: #f4f4f4;
 }
 .navbar-custom .navbar-text {
   color: #ffffff;
@@ -48,46 +48,46 @@
 }
 .navbar-custom .navbar-nav > li > a:hover,
 .navbar-custom .navbar-nav > li > a:focus {
-  color: #fff6db;
+  color: #f4f4f4;
 }
 .navbar-custom .navbar-nav > li > .dropdown-menu {
-  background-color: #ffc414;
+  background-color: #e17055;
 }
 .navbar-custom .navbar-nav > li > .dropdown-menu > li > a {
   color: #ffffff;
 }
 .navbar-custom .navbar-nav > li > .dropdown-menu > li > a:hover,
 .navbar-custom .navbar-nav > li > .dropdown-menu > li > a:focus {
-  color: #fff6db;
-  background-color: #f6be18;
+  color: #f4f4f4;
+  background-color: #cf5d42;
 }
 .navbar-custom .navbar-nav > li > .dropdown-menu > li.divider {
-  background-color: #f6be18;
+  background-color: #cf5d42;
 }
 .navbar-custom .navbar-nav .open .dropdown-menu > .active > a,
 .navbar-custom .navbar-nav .open .dropdown-menu > .active > a:hover,
 .navbar-custom .navbar-nav .open .dropdown-menu > .active > a:focus {
-  color: #fff6db;
-  background-color: #f6be18;
+  color: #f4f4f4;
+  background-color: #cf5d42;
 }
 .navbar-custom .navbar-nav > .active > a,
 .navbar-custom .navbar-nav > .active > a:hover,
 .navbar-custom .navbar-nav > .active > a:focus {
-  color: #fff6db;
-  background-color: #f6be18;
+  color: #f4f4f4;
+  background-color: #cf5d42;
 }
 .navbar-custom .navbar-nav > .open > a,
 .navbar-custom .navbar-nav > .open > a:hover,
 .navbar-custom .navbar-nav > .open > a:focus {
-  color: #fff6db;
-  background-color: #f6be18;
+  color: #f4f4f4;
+  background-color: #cf5d42;
 }
 .navbar-custom .navbar-toggle {
-  border-color: #f6be18;
+  border-color: #cf5d42;
 }
 .navbar-custom .navbar-toggle:hover,
 .navbar-custom .navbar-toggle:focus {
-  background-color: #f6be18;
+  background-color: #cf5d42;
 }
 .navbar-custom .navbar-toggle .icon-bar {
   background-color: #ffffff;
@@ -100,7 +100,7 @@
   color: #ffffff;
 }
 .navbar-custom .navbar-link:hover {
-  color: #fff6db;
+  color: #f4f4f4;
 }
 
 @media (max-width: 767px) {
@@ -109,13 +109,13 @@
   }
   .navbar-custom .navbar-nav .open .dropdown-menu > li > a:hover,
   .navbar-custom .navbar-nav .open .dropdown-menu > li > a:focus {
-    color: #fff6db;
+    color: #f4f4f4;
   }
   .navbar-custom .navbar-nav .open .dropdown-menu > .active > a,
   .navbar-custom .navbar-nav .open .dropdown-menu > .active > a:hover,
   .navbar-custom .navbar-nav .open .dropdown-menu > .active > a:focus {
-    color: #fff6db;
-    background-color: #f6be18;
+    color: #f4f4f4;
+    background-color: #cf5d42;
   }
 }
 /* Custom Login Form*/
@@ -128,23 +128,23 @@ img {max-width: 100%;}
   font-size: 1.3rem;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.3); }
   .login-1--header {
-    background-color: #ffc414; }
+    background-color: #e17055; }
   .login-1 .arrow-down {
-    border-top: 20px solid #ffc414; }
+    border-top: 20px solid #e17055; }
   .login-1 .input-group-addon {
-    background-color: #ffc414; }
+    background-color: #e17055; }
   .login-1 .btn-default {
-    background-color: #ffc414; }
+    background-color: #e17055; }
   .login-1 .login--footer__text:first-of-type {
     border-top: 1px dotted #444; }
   .login-2--header {
-    background-color: #6d008f; }
+    background-color: #e17055; }
   .login-2 .arrow-down {
-    border-top: 20px solid #6d008f; }
+    border-top: 20px solid #e17055; }
   .login-2 .btn-default {
-    background-color: #6d008f; }
+    background-color: #e17055; }
   .login-2 .input-group-addon {
-    background-color: #6d008f; }
+    background-color: #e17055; }
   .login-3--header {
     background-color: #b33000; }
   .login-3 .arrow-down {

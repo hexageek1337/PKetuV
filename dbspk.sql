@@ -56,7 +56,7 @@ CREATE TABLE `pengguna` (
   `kode_event` varchar(6) NULL,
   `nama_lengkap` varchar(255) NOT NULL,
   `username` varchar(100) NOT NULL,
-  `password` varchar(100) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `role` ENUM('Admin','Peserta','Voter') NOT NULL DEFAULT 'Peserta'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -67,12 +67,12 @@ INSERT INTO `event` (`kode_event`, `nama_event`, `limit_event`, `deadline`) VALU
 ('PSG001', 'Paint Saint German', 3, '2020-01-25 23:59:59');
 
 INSERT INTO `pengguna` (`id_pengguna`, `kode_event`, `nama_lengkap`, `username`, `password`, `role`) VALUES
-(1, '', 'Hanif', 'admin', '21232f297a57a5a743894a0e4a801fc3','Admin'),
-(2, '', 'Dadang', 'pesertasatu', '21232f297a57a5a743894a0e4a801fc3','Peserta'),
-(3, '', 'Dudung', 'pesertadua', '21232f297a57a5a743894a0e4a801fc3','Peserta'),
-(4, '', 'Mamat', 'pesertatiga', '21232f297a57a5a743894a0e4a801fc3','Peserta'),
-(5, 'PSG001', 'Aku Voter', 'votersatu', '21232f297a57a5a743894a0e4a801fc3','Voter'),
-(6, 'PSG001', 'Dia Voter', 'voterdua', '21232f297a57a5a743894a0e4a801fc3','Voter');
+(1, '', 'Hanif', 'admin', '$2y$10$nOhTmM0h9sJzXv5q6s7bO.53lIELJB4MqAY9AH/Yqz25yT4tRjCJe','Admin'),
+(2, '', 'Dadang', 'pesertasatu', '$2y$10$DNmjxKE2Y4gO.NsMJVhNg.P.4cDOwh4mdQy5LBQil36vppj3MGjwy','Peserta'),
+(3, '', 'Dudung', 'pesertadua', '$2y$10$f80vxPlA3Ur51rTTVA9SdeSb3SeGvN1UjlyIz68Q06OyKkTBL62eO','Peserta'),
+(4, '', 'Mamat', 'pesertatiga', '$2y$10$XV/wS0ez9LmYOslpRrUevef389zJZkxVl0GLydLLij2VzbMPuJTjy','Peserta'),
+(5, 'PSG001', 'Aku Voter', 'votersatu', '$2y$10$.jB8DSuAUFBVp84C3MIlUOCnBVwMXeCGELv8OHn2QyQvZpoaoVrrW','Voter'),
+(6, 'PSG001', 'Dia Voter', 'voterdua', '$2y$10$Mclederq1bD2cI4l.wGqbeqj3VKyIfLeQgjYmpgA0BQ.p2rSiOAEi','Voter');
 
 INSERT INTO `candidate` (`id_candidate`, `id_pengguna`, `nama_candidate`, `hasil_candidate`) VALUES
 (1, 2, 'Dadang', 0),

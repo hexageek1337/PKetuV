@@ -10,7 +10,7 @@ if($_POST){
 	$login = new Login($db);
 
 	$login->userid = addslashes($_POST['username']);
-	$login->passid = md5(addslashes($_POST['password']));
+	$login->passid = addslashes($_POST['password']);
 	
 	if($login->login()){
 		echo "<script>location.href='index.php'</script>";
@@ -104,12 +104,6 @@ if($_POST){
 				<button type="submit" class="login--form__button btn btn-default" id="logingan" value="Masuk">Masuk</button>
 			</form>
 			<footer class="login--footer text-center">
-				<p class="login--footer__text">Or you can login with one of the following</p>
-				<div class="login--footer__social-buttons">
-					<a href="#"><span class="icon icon-small icon-fb fa fa-facebook"></span></a>
-					<a href="#"><span class="icon icon-small icon-tw fa fa-twitter"></span></a>
-					<a href="#"><span class="icon icon-small icon-gp fa fa-google-plus"></span></a>
-				</div>
 				<p class="login--footer__text">Belum mempunyai akun? <strong><a href="/register.php">Daftar disini!</a></strong></p>
 			</footer>
 		</div>

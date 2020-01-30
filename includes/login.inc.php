@@ -24,24 +24,28 @@ class Login
             $_SESSION['kdevent'] = $user['kode_event'];
             $_SESSION['role'] = base64_encode($user['role']);
             return $user['nama_lengkap'];
+        } else {
+            return false;
         }
-        return false;
     }
 
     protected function checkCredentials()
     {
-        $stmt = $this->conn->prepare('SELECT * FROM '.$this->table_name.' WHERE username=? and password=? ');
+        $stmt = $this->conn->prepare('SELECT * FROM '.$this->table_name.' WHERE username = ?');
 		$stmt->bindParam(1, $this->userid);
-		$stmt->bindParam(2, $this->passid);
         $stmt->execute();
         if ($stmt->rowCount() > 0) {
             $data = $stmt->fetch(PDO::FETCH_ASSOC);
             $submitted_pass = $this->passid;
-            if ($submitted_pass == $data['password']) {
+
+            if (password_verify($submitted_pass, $data['password'])) {
                 return $data;
+            } else {
+                return false;
             }
+        } else {
+            return false;
         }
-        return false;
     }
 
     public function getUser()

@@ -17,18 +17,18 @@ class User{
 	}
 	
 	function insert(){
-		
+		$hashedPassword = password_hash($this->pw, PASSWORD_BCRYPT);
 		$query = "insert into ".$this->table_name." values(NULL,:ka,:nl,:un,:pw,:rl)";
 		$stmt = $this->conn->prepare($query);
 		$stmt->bindParam(':ka', $this->ka);
 		$stmt->bindParam(':nl', $this->nl);
 		$stmt->bindParam(':un', $this->un);
-		$stmt->bindParam(':pw', $this->pw);
+		$stmt->bindParam(':pw', $hashedPassword);
 		$stmt->bindParam(':rl', $this->rl);
 		
 		if($stmt->execute()){
 			return true;
-		}else{
+		} else {
 			return false;
 		}
 		

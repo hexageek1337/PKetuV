@@ -16,7 +16,7 @@ if($_POST AND $_POST['ka']){
     if ($datavoter['jvterdaftar'] < $dataevent['limit_event']) {
 	    $eks->nl = addslashes($_POST['nl']);
 	    $eks->un = addslashes($_POST['un']);
-	    $eks->pw = md5(addslashes($_POST['pw']));
+	    $eks->pw = addslashes($_POST['pw']);
 	    $eks->rl = 'Voter';
 		
 		if($eks->insert()){

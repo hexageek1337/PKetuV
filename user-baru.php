@@ -5,12 +5,12 @@ if($_POST){
     include_once 'includes/user.inc.php';
     $eks = new User($db);
 
-    $eks->nl = addslashes($_POST['nl']);
-    $eks->un = addslashes($_POST['un']);
-    $eks->pw = md5(addslashes($_POST['pw']));
-    $eks->rl = addslashes($_POST['rl']);
-
-    if($eks->pw == md5($_POST['up'])){
+    if(addslashes($_POST['pw']) === addslashes($_POST['up'])){
+      $eks->ka = '';
+      $eks->nl = addslashes($_POST['nl']);
+      $eks->un = addslashes($_POST['un']);
+      $eks->pw = addslashes($_POST['pw']);
+      $eks->rl = addslashes($_POST['rl']);
     
     if($eks->insert()){
 ?>
@@ -19,9 +19,7 @@ if($_POST){
   <strong>Berhasil Tambah Data!</strong> Tambah lagi atau <a href="user.php">lihat semua data</a>.
 </div>
 <?php
-    }
-    
-    else{
+    } else {
 ?>
 <div class="alert alert-danger alert-dismissible" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -30,7 +28,7 @@ if($_POST){
 <?php
     }
 
-    } else{
+    } else {
 ?>
 <div class="alert alert-warning alert-dismissible" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -64,8 +62,8 @@ if($_POST){
                     <input type="password" class="form-control" id="up" name="up" required>
                   </div>
                   <div class="form-group">
-                    <label for="up">Role</label>
-                    <select name="rl" class="form-control" id="up">
+                    <label for="rl">Role</label>
+                    <select name="rl" class="form-control" id="rl">
                       <option>-- Pilih --</option>
                       <option value="Admin">Admin</option>
                       <option value="Peserta">Peserta</option>

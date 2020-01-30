@@ -13,7 +13,7 @@ if($_POST){
 
     $eks->nl = addslashes($_POST['nl']);
     $eks->un = addslashes($_POST['un']);
-    $eks->pw = md5(addslashes($_POST['pw']));
+    $eks->pw = password_hash(addslashes($_POST['pw']), PASSWORD_BCRYPT);
     $eks->rl = addslashes($_POST['rl']);
     
     if($eks->update('fpengguna')){
