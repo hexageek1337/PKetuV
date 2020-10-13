@@ -4,6 +4,9 @@ if (isset($_GET['id']) AND $_GET['id'] != '') {
 	$id_pengguna = intval($_GET['id']);
 	include_once 'includes/candidate.inc.php';
 	$eks = new candidate($db);
+	include_once 'includes/user.inc.php';
+	$pro = new User($db);
+
 	$eks->ip = intval($id_pengguna);
 	$stmk = $eks->readKandidatUser();
 	if (isset($_GET['id']) AND $_GET['id'] == 1) { ?>
@@ -18,8 +21,10 @@ if (isset($_GET['id']) AND $_GET['id'] != '') {
 if($_POST){
 	$eks->kt = addslashes($_POST['kt']);
 	$eks->ip = intval($id_pengguna);
+	$pro->nl = addslashes($_POST['kt']);
+	$pro->id = intval($id_pengguna);
 	
-	if($eks->insert()){
+	if($eks->insert() and $pro->update('fcandidate')){
 ?>
 <div class="alert alert-success alert-dismissible" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>

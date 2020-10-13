@@ -30,17 +30,17 @@ if($_POST){
 		<div class="row">
 		  <div class="col-xs-12 col-sm-12 col-md-8">
 		  	<div class="page-header">
-			  <h5>Tambah Value Preferensi</h5>
+			  <h5>Tambah Nilai Preferensi</h5>
 			</div>
 			
 			    <form method="post">
 				  <div class="form-group">
-				    <label for="kt">Keterangan value</label>
+				    <label for="kt">Keterangan Nilai</label>
 				    <input type="text" class="form-control" id="kt" name="kt" required>
 				  </div>
 				  <div class="form-group">
-				    <label for="jm">Jumlah value</label>
-				    <input type="text" class="form-control" id="jm" name="jm" required>
+				    <label for="jm">Jumlah Nilai</label>
+				    <input type="number" class="form-control" id="jm" name="jm" required>
 				  </div>
 				  <button type="submit" class="btn btn-primary">Simpan</button>
 				  <button type="button" onclick="location.href='value.php'" class="btn btn-success">Kembali</button>

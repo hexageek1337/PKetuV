@@ -61,6 +61,19 @@ class User{
 	}
 
 	// used when filling up the update product form
+	function readNama(){
+		$query = "SELECT * FROM " . $this->table_name . " WHERE nama_lengkap LIKE CONCAT('%', :nl, '%') LIMIT 0,1";
+
+		$stmt = $this->conn->prepare($query);
+		$stmt->bindParam(':nl', $this->nl);
+		$stmt->execute();
+
+		$row = $stmt->fetch(PDO::FETCH_ASSOC);
+		
+		$this->id = $row['id_pengguna'];
+	}
+
+	// used when filling up the update product form
 	function readevent(){
 		
 		$query = "SELECT * FROM " . $this->table_dua . " WHERE kode_event = :ka LIMIT 0,1";

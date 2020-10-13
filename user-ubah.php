@@ -2,10 +2,13 @@
 include_once 'header.php';
 $id = isset($_GET['id']) ? $_GET['id'] : die('ERROR: missing ID.');
 
+include_once 'includes/candidate.inc.php';
+$pro = new candidate($db);
 include_once 'includes/user.inc.php';
 $eks = new User($db);
 
 $eks->id = intval($id);
+$pro->id = intval($id);
 
 $eks->readOne();
 
@@ -15,16 +18,30 @@ if($_POST){
     $eks->un = addslashes($_POST['un']);
     $eks->pw = password_hash(addslashes($_POST['pw']), PASSWORD_BCRYPT);
     $eks->rl = addslashes($_POST['rl']);
+    $pro->kt = $eks->nl;
     
-    if($eks->update('fpengguna')){
-        echo "<script>location.href='user.php'</script>";
-    } else{
-?>
-<div class="alert alert-danger alert-dismissible" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <strong>Gagal Ubah Data!</strong> Terjadi kesalahan, coba sekali lagi.
-</div>
-<?php
+    if ($eks->rl === 'Peserta') {
+      if($eks->update('fpengguna') AND $pro->update('pengguna')){
+          echo "<script>location.href='user.php'</script>";
+      } else {
+  ?>
+  <div class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <strong>Gagal Ubah Data!</strong> Terjadi kesalahan, coba sekali lagi.
+  </div>
+  <?php
+      }
+    } else {
+      if($eks->update('fpengguna')){
+          echo "<script>location.href='user.php'</script>";
+      } else {
+  ?>
+  <div class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <strong>Gagal Ubah Data!</strong> Terjadi kesalahan, coba sekali lagi.
+  </div>
+  <?php
+      }
     }
 }
 ?>

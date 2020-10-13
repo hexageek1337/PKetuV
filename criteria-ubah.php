@@ -18,31 +18,39 @@ if($_POST){
 	$eks->tp = $_POST['tp'];
 	$eks->jm = $_POST['jm'];
 	
-	if($eks->update()){
-		echo "<script>location.href='criteria.php'</script>";
-	} else{
-?>
-<div class="alert alert-danger alert-dismissible" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <strong>Gagal Ubah Data!</strong> Terjadi kesalahan, coba sekali lagi.
-</div>
-<?php
+	if ($eks->jm >= 0 AND $eks->jm <= 1) {
+		if($eks->update()){
+			echo "<script>location.href='criteria.php'</script>";
+		} else{
+	?>
+	<div class="alert alert-danger alert-dismissible" role="alert">
+	  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	  <strong>Gagal Ubah Data!</strong> Terjadi kesalahan, coba sekali lagi.
+	</div>
+	<?php
+		}
+	} else { ?>
+	<div class="alert alert-danger alert-dismissible" role="alert">
+	  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	  <strong>Gagal Ubah Data!</strong> Terjadi kesalahan, coba sekali lagi.
+	</div>
+	<?php
 	}
 }
 ?>
 		<div class="row">
 		  <div class="col-xs-12 col-sm-12 col-md-8">
 		  	<div class="page-header">
-			  <h5>Ubah criteria</h5>
+			  <h5>Ubah Kriteria</h5>
 			</div>
 			
 			    <form method="post">
 				  <div class="form-group">
-				    <label for="kt">Nama criteria</label>
+				    <label for="kt">Nama Kriteria</label>
 				    <input type="text" class="form-control" id="kt" name="kt" value="<?php echo $eks->kt; ?>" required>
 				  </div>
 				  <div class="form-group">
-				    <label for="tp">Tipe criteria</label>
+				    <label for="tp">Tipe Kriteria</label>
 				    <select class="form-control" id="tp" name="tp" required>
 				    	<option><?php echo $eks->tp; ?></option>
 				    	<option value='benefit'>Benefit</option>
@@ -50,8 +58,8 @@ if($_POST){
 				    </select>
 				  </div>
 				  <div class="form-group">
-				    <label for="jm">Bobot criteria</label>
-				    <input type="text" class="form-control" id="jm" name="jm" placeholder="0 ..." min="0" max="1" required>
+				    <label for="jm">Bobot Kriteria</label>
+				    <input type="text" class="form-control" id="jm" name="jm" placeholder="0.5" min="0" max="1" required>
 				  </div>
 				  <button type="submit" class="btn btn-primary">Ubah</button>
 				  <button type="button" onclick="location.href='criteria.php'" class="btn btn-success">Kembali</button>
